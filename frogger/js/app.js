@@ -1,4 +1,14 @@
 // Enemies our player must avoid
+Object.prototype.render = function(){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+Object.prototype.reset = function(){
+    player.x = 200;
+    player.y = 400;
+}
+
+
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -8,7 +18,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = Math.floor((math.random() * 200) + 100);
+    this.speed = Math.floor((Math.random() * 200) + 100);
 }
 
 // Update the enemy's position, required method for game
@@ -72,10 +82,10 @@ Player.prototype.handleInput = function(e){
 // Place the player object in a variable called player
 var allEnemies = [];
 (function setEnemies(){
-    allEnemies.push(new Enemies(-2, 60));
-    allEnemies.push(new Enemies(-2, 100));
-    allEnemies.push(new Enemies(-2, 150));
-    allEnemies.push(new Enemies(-2, 220));
+    allEnemies.push(new Enemy(-2, 60));
+    allEnemies.push(new Enemy(-2, 100));
+    allEnemies.push(new Enemy(-2,150));
+    allEnemies.push(new Enemy(-2,220));
 }());
 
 var player = new Player();
